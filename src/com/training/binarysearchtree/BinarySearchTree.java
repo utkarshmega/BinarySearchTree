@@ -12,7 +12,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	}
 
 	/**
-	 * To add new node to the bst by checking the conditons
+	 * To add new node to the bst by checking the conditions
 	 */
 	public BSTnode<T> addKeyInBST(BSTnode<T> root, T key) {
 
@@ -27,6 +27,25 @@ public class BinarySearchTree<T extends Comparable<T>> {
 		}
 		return root;
 	}
+	
+	/**
+	 * to print the size of the tree 
+	 */
+	public void size() {
+		
+		int size = sizeFunction(rootNode);
+		System.out.println("The size of Binary Search Tree is " +size);
+	}
+	
+	/**
+	 * to calculate the size of the bst recursively
+	 */
+	public int sizeFunction(BSTnode<T> root)
+	{
+		if(root == null)
+			return 0;
+		return 1 + sizeFunction(root.left) + sizeFunction(root.right);
+	}
 
 	public static void main(String[] args) {
 
@@ -34,7 +53,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 		bst.add(56);
 		bst.add(30);
 		bst.add(70);
-
+		bst.size();
 	}
 
 }
