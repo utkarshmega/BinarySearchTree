@@ -4,10 +4,16 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
 	private BSTnode<T> rootNode;
 
+	/**
+	 *to add node to the bst by calling the addKeyInBST method
+	 */
 	public void add(T key) {
 		rootNode = addKeyInBST(rootNode, key);
 	}
 
+	/**
+	 * To add new node to the bst by checking the conditons
+	 */
 	public BSTnode<T> addKeyInBST(BSTnode<T> root, T key) {
 
 		if (root == null) {
