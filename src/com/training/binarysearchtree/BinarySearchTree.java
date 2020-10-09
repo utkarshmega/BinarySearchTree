@@ -46,6 +46,47 @@ public class BinarySearchTree<T extends Comparable<T>> {
 			return 0;
 		return 1 + sizeFunction(root.left) + sizeFunction(root.right);
 	}
+	
+	/**
+	 * to search the target element in the bst
+	 */
+	public void search(T key)
+	{
+		int result = searchKey(rootNode, key);
+		if(result!=-1) {
+			System.out.println("The key "+key+" is found at position "+result);
+		}
+		else
+			System.out.println("The key "+key+" is not found");
+	}
+	
+	/**
+	 * recursively finding the key in the bst
+	 */
+	public int searchKey(BSTnode<T> root, T key)
+	{
+		int pos = 0, flag=0;
+		if(root==null)
+			return -1;
+		while(root!=null)
+		{
+			if(root.key.compareTo(key)==0) {
+				flag=1;
+				break;
+			}
+			else if(root.key.compareTo(key)<0) {
+				root = root.right;
+				pos++;
+			}
+			else if(root.key.compareTo(key)>0) {
+				root = root.left;
+				pos++;
+			}
+		}
+		if(flag==1)
+			return pos+1;
+		return -1;
+	}
 
 	public static void main(String[] args) {
 
@@ -53,7 +94,10 @@ public class BinarySearchTree<T extends Comparable<T>> {
 		bst.add(56);
 		bst.add(30);
 		bst.add(70);
+		bst.add(63);
 		bst.size();
+		bst.search(63);
+		bst.search(12);
 	}
 
 }
